@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Validador de Incoterms 2020</title>
+<link rel='stylesheet' href='assets/styles.css'>
+</head>
+<body>
+<header>
+<h1>Herramienta Validadora de Incoterms</h1>
+<p>Versión estática basada en tu archivo Excel.</p>
+</header>
+<main>
+<section class='card'>
+<h2>Datos a validar</h2>
+<div class='grid'>
+<label for='incoterm'>INCOTERM</label>
+<select id='incoterm'></select>
+<label for='transporte'>Medio de transporte principal</label>
+<select id='transporte'>
+<option>Multimodal</option>
+<option>Marítimo</option>
+<option>Ferroviario</option>
+<option>Carretero</option>
+<option>Aéreo</option>
+</select>
+<label for='lugar'>Lugar específico de entrega</label>
+<input id='lugar' type='text' placeholder='Ej.: Quito'>
+</div>
+<button id='validar'>Validar</button>
+</section>
+<section class='card' id='resultado'>
+<h2>Resultado de verificación</h2>
+<div id='salida'></div>
+</section>
+</main>
+<footer>
+<small>Incoterms® 2020 — Referencia educativa. Esta herramienta no sustituye asesoría legal.</small>
+</footer>
+<script>
+const reglas = [{"INCOTERM": "EXW", "TIPO_TRANSPORTE": "Multimodal", "PUNTO_RIESGO_CLAVE": "Comprador (Asistencia)", "RESPONSABLE_EXPORTACION": "Comprador", "RESPONSABLE_IMPORTACION": "Comprador", "ALERTA_ESPECIAL": "Riesgo de carga del camión es del Comprador."}, {"INCOTERM": "FCA", "TIPO_TRANSPORTE": "Multimodal", "PUNTO_RIESGO_CLAVE": "Vendedor", "RESPONSABLE_EXPORTACION": "Comprador", "RESPONSABLE_IMPORTACION": "Comprador", "ALERTA_ESPECIAL": "Verificar cláusula 'On-Board' para B/L."}, {"INCOTERM": "CPT", "TIPO_TRANSPORTE": "Multimodal", "PUNTO_RIESGO_CLAVE": "Vendedor", "RESPONSABLE_EXPORTACION": "Comprador", "RESPONSABLE_IMPORTACION": "Comprador", "ALERTA_ESPECIAL": "El Vendedor solo paga el flete hasta el destino."}, {"INCOTERM": "CIP", "TIPO_TRANSPORTE": "Multimodal", "PUNTO_RIESGO_CLAVE": "Vendedor", "RESPONSABLE_EXPORTACION": "Comprador", "RESPONSABLE_IMPORTACION": "Comprador", "ALERTA_ESPECIAL": "Seguro Obligatorio (Cláusula A, 'All Risk')."}, {"INCOTERM": "DAP", "TIPO_TRANSPORTE": "Multimodal", "PUNTO_RIESGO_CLAVE": "Vendedor", "RESPONSABLE_EXPORTACION": "Comprador", "RESPONSABLE_IMPORTACION": "Comprador", "ALERTA_ESPECIAL": "Riesgo pasa antes de descargar en destino."}, {"INCOTERM": "DPU", "TIPO_TRANSPORTE": "Multimodal", "PUNTO_RIESGO_CLAVE": "Vendedor", "RESPONSABLE_EXPORTACION": "Comprador", "RESPONSABLE_IMPORTACION": "Comprador", "ALERTA_ESPECIAL": "El Vendedor es responsable de la descarga."}, {"INCOTERM": "DDP", "TIPO_TRANSPORTE": "Multimodal", "PUNTO_RIESGO_CLAVE": "Vendedor", "RESPONSABLE_EXPORTACION": "Vendedor", "RESPONSABLE_IMPORTACION": "Vendedor", "ALERTA_ESPECIAL": "El Vendedor asume todos los costos y riesgos, incluyendo aduanas de importación."}, {"INCOTERM": "FAS", "TIPO_TRANSPORTE": "Marítimo", "PUNTO_RIESGO_CLAVE": "Vendedor", "RESPONSABLE_EXPORTACION": "Comprador", "RESPONSABLE_IMPORTACION": "Comprador", "ALERTA_ESPECIAL": "Riesgo pasa al costado del buque."}, {"INCOTERM": "FOB", "TIPO_TRANSPORTE": "Marítimo", "PUNTO_RIESGO_CLAVE": "Vendedor", "RESPONSABLE_EXPORTACION": "Comprador", "RESPONSABLE_IMPORTACION": "Comprador", "ALERTA_ESPECIAL": "¡Uso Crítico! Solo para transporte marítimo."}, {"INCOTERM": "CFR", "TIPO_TRANSPORTE": "Marítimo", "PUNTO_RIESGO_CLAVE": "Vendedor", "RESPONSABLE_EXPORTACION": "Comprador", "RESPONSABLE_IMPORTACION": "Comprador", "ALERTA_ESPECIAL": "Vendedor paga flete; Riesgo pasa a bordo."}, {"INCOTERM": "CIF", "TIPO_TRANSPORTE": "Marítimo", "PUNTO_RIESGO_CLAVE": "Vendedor", "RESPONSABLE_EXPORTACION": "Comprador", "RESPONSABLE_IMPORTACION": "Comprador", "ALERTA_ESPECIAL": "Seguro Obligatorio (Cláusula C, Mínimo)."}];
+</script>
+<script src='assets/script.js'></script>
+</body>
+</html>

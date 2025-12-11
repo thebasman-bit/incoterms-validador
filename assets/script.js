@@ -1,0 +1,10 @@
+function opcionesIncoterm(reglas){const sel=document.getElementById('incoterm');const incos=[...new Set(reglas.map(r=>r.INCOTERM))];incos.forEach(i=>{const opt=document.createElement('option');opt.value=i;opt.textContent=i;sel.appendChild(opt);});}
+function badge(texto,tipo){const p=document.createElement('p');const b=document.createElement('span');b.className=`badge ${tipo||'ok'}`;b.textContent=texto;p.appendChild(b);return p;}
+function validar(){const incoterm=document.getElementById('incoterm').value;const transporte=document.getElementById('transporte').value;const lugar=document.getElementById('lugar').value.trim();const salida=document.getElementById('salida');salida.innerHTML='';const regla=reglas.find(r=>r.INCOTERM===incoterm);
+let transporteOk=false;if(regla.TIPO_TRANSPORTE==='Multimodal'){transporteOk=['Multimodal','Marítimo','Ferroviario','Carretero','Aéreo'].includes(transporte);}else{transporteOk=(regla.TIPO_TRANSPORTE===transporte);}salida.appendChild(badge(transporteOk?'✅ Correcto. Compatible con transporte.':'❌ No compatible con transporte.',transporteOk?'ok':'err'));
+const lugarOk=lugar.length>0;salida.appendChild(badge(lugarOk?'✅ Lugar especificado.':'❌ Falta lugar.',lugarOk?'ok':'err'));
+if(regla.ALERTA_ESPECIAL&&regla.ALERTA_ESPECIAL!=='nan'){salida.appendChild(badge('⚠️ '+regla.ALERTA_ESPECIAL,'warn'));}
+const resumen=document.createElement('div');resumen.innerHTML='<p><strong>Resumen</strong></p>';salida.appendChild(resumen);
+const clausula=document.createElement('p');clausula.textContent=`${incoterm} ${lugar||'(lugar pendiente)'}, Incoterms2020`;salida.appendChild(clausula);
+const det=document.createElement('div');det.innerHTML=`<p><strong>Punto de riesgo:</strong> ${regla.PUNTO_RIESGO_CLAVE}</p><p><strong>Responsable exportación:</strong> ${regla.RESPONSABLE_EXPORTACION}</p><p><strong>Responsable importación:</strong> ${regla.RESPONSABLE_IMPORTACION}</p>`;salida.appendChild(det);}
+window.addEventListener('DOMContentLoaded',()=>{opcionesIncoterm(reglas);document.getElementById('validar').addEventListener('click',validar);});
